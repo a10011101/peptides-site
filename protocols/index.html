@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Protocol Library — Peptides.site</title>
+  <meta name="description" content="Comprehensive research protocols for BPC-157, TB-500, IGF-1 LR3, Ipamorelin, and CJC-1295. Dosing tables, reconstitution guides, and cycle lengths.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f8f9fc;--surface:#fff;--border:#e2e8f0;--text:#1a202c;--text-muted:#64748b;--accent:#2563eb;--accent-light:#eff6ff;--teal:#0d9488;--teal-light:#f0fdfa;--radius:10px}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    nav{background:var(--surface);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-family:'Space Mono',monospace;font-weight:700;color:var(--text);font-size:1rem}.nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-muted)}.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .disclaimer-bar{background:#fff7ed;border-bottom:1px solid #fed7aa;padding:8px 24px;text-align:center;font-size:.78rem;color:#9a3412;font-weight:500}
+    .page{max-width:1200px;margin:0 auto;padding:48px 24px 80px}
+    .page-header{margin-bottom:48px}
+    .breadcrumb{font-size:.8rem;color:var(--text-muted);margin-bottom:12px}.breadcrumb a{color:var(--text-muted)}
+    .page-header h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+    .page-header p{color:var(--text-muted);max-width:600px}
+    .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+    .filter-btn{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:.825rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .2s}
+    .filter-btn.active,.filter-btn:hover{background:var(--accent);color:white;border-color:var(--accent)}
+    .protocols-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+    .p-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .2s;display:flex;flex-direction:column}
+    .p-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(37,99,235,.1);transform:translateY(-2px)}
+    .p-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+    .p-badge{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:20px;font-family:'Space Mono',monospace}
+    .badge-healing{background:var(--teal-light);color:var(--teal)}
+    .badge-growth{background:#f5f3ff;color:#7c3aed}
+    .badge-gh{background:#fff7ed;color:#ea580c}
+    .p-card h2{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+    .p-card .tagline{font-size:.85rem;color:var(--text-muted);margin-bottom:16px}
+    .p-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+    .p-meta-item{background:var(--bg);border-radius:8px;padding:10px 12px}
+    .p-meta-item .key{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:2px}
+    .p-meta-item .val{font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;color:var(--text)}
+    .p-card-cta{margin-top:auto;padding-top:16px;border-top:1px solid var(--border)}
+    .btn-card{display:block;text-align:center;background:var(--accent-light);color:var(--accent);font-weight:600;font-size:.875rem;padding:10px;border-radius:8px;transition:all .2s}
+    .btn-card:hover{background:var(--accent);color:white;text-decoration:none}
+    footer{background:#1a202c;color:#94a3b8;padding:24px;text-align:center;font-size:.775rem}
+    @media(max-width:768px){.nav-links{display:none}}
+  </style>
+</head>
+<body>
+  <div class="disclaimer-bar">⚠️ <strong>Research Use Only.</strong> Not for human use or medical advice.</div>
+  <nav><div class="nav-inner">
+    <a href="/" class="nav-logo">peptides<span>.site</span></a>
+    <ul class="nav-links">
+      <li><a href="/protocols/" class="active">Protocols</a></li>
+      <li><a href="/calculator/">Calculator</a></li>
+      <li><a href="/#lead-capture">Newsletter</a></li>
+    </ul>
+  </div></nav>
+
+  <div class="page">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="/">Home</a> › Protocols</div>
+      <h1>📋 Peptide Protocol Library</h1>
+      <p>Detailed research protocols with dosing tables, reconstitution guides, and cycle lengths. Select a peptide to view the full protocol.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all',this)">All Peptides</button>
+      <button class="filter-btn" onclick="filterCards('healing',this)">Healing &amp; Recovery</button>
+      <button class="filter-btn" onclick="filterCards('growth',this)">Growth</button>
+      <button class="filter-btn" onclick="filterCards('gh',this)">GH Secretagogues</button>
+    </div>
+
+    <div class="protocols-grid">
+      <div class="p-card" data-cat="healing">
+        <div class="p-card-top"><span class="p-badge badge-healing">Healing</span></div>
+        <h2>BPC-157</h2>
+        <div class="tagline">Body Protection Compound — 15 amino acid pentadecapeptide</div>
+        <div class="p-meta">
+          <div class="p-meta-item"><div class="key">Half-life</div><div class="val">~4 hours</div></div>
+          <div class="p-meta-item"><div class="key">Route</div><div class="val">Sub-Q / IM</div></div>
+          <div class="p-meta-item"><div class="key">Typical Dose</div><div class="val">200–500 mcg</div></div>
+          <div class="p-meta-item"><div class="key">Frequency</div><div class="val">1–2x daily</div></div>
+        </div>
+        <div class="p-card-cta"><a href="/protocols/bpc-157/" class="btn-card">View Full Protocol →</a></div>
+      </div>
+
+      <div class="p-card" data-cat="healing">
+        <div class="p-card-top"><span class="p-badge badge-healing">Systemic Repair</span></div>
+        <h2>TB-500</h2>
+        <div class="tagline">Thymosin Beta-4 — systemic tissue repair peptide</div>
+        <div class="p-meta">
+          <div class="p-meta-item"><div class="key">Half-life</div><div class="val">~3 days</div></div>
+          <div class="p-meta-item"><div class="key">Route</div><div class="val">Sub-Q / IM</div></div>
+          <div class="p-meta-item"><div class="key">Loading</div><div class="val">4–8 mg/wk</div></div>
+          <div class="p-meta-item"><div class="key">Maintenance</div><div class="val">2–6 mg/wk</div></div>
+        </div>
+        <div class="p-card-cta"><a href="/protocols/tb-500/" class="btn-card">View Full Protocol →</a></div>
+      </div>
+
+      <div class="p-card" data-cat="growth">
+        <div class="p-card-top"><span class="p-badge badge-growth">Growth</span></div>
+        <h2>IGF-1 LR3</h2>
+        <div class="tagline">Insulin-like Growth Factor — Long R3 variant</div>
+        <div class="p-meta">
+          <div class="p-meta-item"><div class="key">Half-life</div><div class="val">20–30 hrs</div></div>
+          <div class="p-meta-item"><div class="key">Route</div><div class="val">IM preferred</div></div>
+          <div class="p-meta-item"><div class="key">Typical Dose</div><div class="val">20–100 mcg</div></div>
+          <div class="p-meta-item"><div class="key">Cycle Max</div><div class="val">4 weeks</div></div>
+        </div>
+        <div class="p-card-cta"><a href="/protocols/igf-1-lr3/" class="btn-card">View Full Protocol →</a></div>
+      </div>
+
+      <div class="p-card" data-cat="gh">
+        <div class="p-card-top"><span class="p-badge badge-gh">GH Secretagogue</span></div>
+        <h2>Ipamorelin</h2>
+        <div class="tagline">Selective ghrelin mimetic — clean GH pulse</div>
+        <div class="p-meta">
+          <div class="p-meta-item"><div class="key">Half-life</div><div class="val">~2 hours</div></div>
+          <div class="p-meta-item"><div class="key">Route</div><div class="val">Sub-Q</div></div>
+          <div class="p-meta-item"><div class="key">Typical Dose</div><div class="val">200–300 mcg</div></div>
+          <div class="p-meta-item"><div class="key">Frequency</div><div class="val">2–3x daily</div></div>
+        </div>
+        <div class="p-card-cta"><a href="/protocols/ipamorelin/" class="btn-card">View Full Protocol →</a></div>
+      </div>
+
+      <div class="p-card" data-cat="gh">
+        <div class="p-card-top"><span class="p-badge badge-gh">GHRH Analogue</span></div>
+        <h2>CJC-1295 (no DAC)</h2>
+        <div class="tagline">Modified GRF 1-29 — synergistic GHRH analogue</div>
+        <div class="p-meta">
+          <div class="p-meta-item"><div class="key">Half-life</div><div class="val">~30 min</div></div>
+          <div class="p-meta-item"><div class="key">Route</div><div class="val">Sub-Q</div></div>
+          <div class="p-meta-item"><div class="key">Typical Dose</div><div class="val">100 mcg</div></div>
+          <div class="p-meta-item"><div class="key">Frequency</div><div class="val">2–3x daily</div></div>
+        </div>
+        <div class="p-card-cta"><a href="/protocols/cjc-1295/" class="btn-card">View Full Protocol →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <footer><p>© 2026 <a href="/" style="color:#60a5fa">Peptides.site</a> — For research purposes only. Not medical advice.</p></footer>
+
+  <script>
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.p-card').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
