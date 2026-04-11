@@ -383,7 +383,7 @@
           <div class="lead-perk">No spam — unsubscribe any time</div>
         </div>
         <form class="lead-form" id="leadForm" onsubmit="submitLead(event)">
-          <input type="text" name="name" placeholder="Your first name" required>
+          <input type="text" name="name" placeholder="Your first name" required pattern="[A-Za-z\s\-']+" title="Letters, spaces, hyphens and apostrophes only" oninput="this.value=this.value.replace(/[^A-Za-z\s\-']/g,'')">
           <input type="email" name="email" placeholder="Your email address" required>
           <select name="interest">
             <option value="" disabled selected>Primary research interest (optional)</option>
