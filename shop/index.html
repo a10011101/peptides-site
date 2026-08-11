@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Peptide Shop — Trusted Suppliers | Peptides.site</title>
+  <meta name="description" content="Compare trusted research peptide suppliers. Third-party tested, verified quality, fast shipping. BPC-157, TB-500, CJC-1295, Ipamorelin and more.">
+  <link rel="canonical" href="https://peptides.site/shop/">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-foreground: #FFFFFF;
+      --accent: #EA580C;
+      --background: #EEF2FF;
+      --foreground: #1E1B4B;
+      --muted: #EBEEF8;
+      --border: #C7D2FE;
+      --radius: 16px;
+    }
+    [data-theme="dark"] {
+      --background: #0F172A;
+      --foreground: #E0E7FF;
+      --muted: #1E2937;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+    h1, h2, h3 { font-family: 'Crimson Pro', serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    [data-theme="dark"] nav { background: rgba(15,23,42,0.95); }
+    .nav-content { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .logo { font-family: 'Crimson Pro', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--foreground); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page-hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+      text-align: center;
+    }
+    [data-theme="dark"] .page-hero { background: linear-gradient(135deg, #1E2937 0%, #0F172A 100%); }
+
+    .vendor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      padding: 60px 0;
+    }
+
+    .vendor-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    [data-theme="dark"] .vendor-card { background: #1E2937; }
+    .vendor-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15); }
+
+    .vendor-header { padding: 28px 28px 0; }
+    .vendor-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .badge-top { background: #fef3c7; color: #92400e; }
+    .badge-intl { background: #dbeafe; color: #1e40af; }
+    .badge-eu { background: #d1fae5; color: #065f46; }
+
+    .vendor-body { padding: 0 28px 28px; flex: 1; display: flex; flex-direction: column; }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .product-tag {
+      background: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+    .checklist { list-style: none; margin: 16px 0 24px; color: #64748b; font-size: 0.95rem; }
+    .checklist li::before { content: "✓ "; color: #059669; font-weight: 700; }
+
+    .shop-btn {
+      display: block;
+      text-align: center;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.2s;
+      margin-top: auto;
+    }
+    .shop-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgb(0 0 0 / 0.07);
+      margin: 40px 0 80px;
+    }
+    [data-theme="dark"] .compare-table { background: #1E2937; }
+    .compare-table th {
+      background: var(--primary);
+      color: white;
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.9rem;
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+      font-weight: 700;
+    }
+    .compare-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: var(--muted); }
+    .tick { color: #059669; font-weight: 700; }
+    .cross { color: #dc2626; }
+
+    .disclaimer {
+      background: #fef2f2;
+      border-left: 6px solid #dc2626;
+      padding: 24px;
+      margin: 0 0 60px;
+      font-size: 0.95rem;
+      color: #7f1d1d;
+      border-radius: 0 12px 12px 0;
+    }
+
+    footer {
+      background: var(--foreground);
+      color: #e0e7ff;
+      padding: 60px 0 32px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-content">
+      <a href="/" class="logo">peptides<span>.site</span></a>
+      <ul class="nav-links">
+        <li><a href="/protocols/">Protocols</a></li>
+        <li><a href="/calculator/">Calculator</a></li>
+        <li><a href="/#research">Research</a></li>
+        <li><a href="/shop/" style="color:var(--accent);font-weight:700;">Shop</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1 style="font-size:clamp(2.5rem,6vw,4rem);margin-bottom:20px;">Trusted Research Suppliers</h1>
+      <p style="font-size:1.2rem;color:#475569;max-width:640px;margin:0 auto;">Verified vendors with third-party purity testing, consistent stock, and fast shipping. For research purposes only.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="vendor-grid">
+
+      <!-- Peptide Sciences -->
+      <div class="vendor-card">
+        <div style="height:6px;background:var(--accent);"></div>
+        <div class="vendor-header">
+          <span class="vendor-badge badge-top">⭐ Most Popular</span>
+          <h3 style="font-size:1.8rem;color:var(--accent);">Peptide Sciences</h3>
+          <p style="color:#64748b;margin-top:8px;">US-based, industry benchmark for purity and documentation.</p>
+        </div>
+        <div class="vendor-body">
+          <div class="product-tags">
+            <span class="product-tag">BPC-157</span>
+            <span class="product-tag">TB-500</span>
+            <span class="product-tag">CJC-1295</span>
+            <span class="product-tag">Ipamorelin</span>
+            <span class="product-tag">IGF-1 LR3</span>
+            <span class="product-tag">GHK-Cu</span>
+            <span class="product-tag">Epithalon</span>
+          </div>
+          <ul class="checklist">
+            <li>Third-party HPLC tested, CoA per batch</li>
+            <li>US-manufactured, cGMP facility</li>
+            <li>Fast domestic shipping (2–3 days)</li>
+            <li>Consistent stock availability</li>
+          </ul>
+          <a href="https://www.peptidessciences.com" target="_blank" rel="noopener" class="shop-btn" style="background:var(--accent);color:white;">Shop Peptide Sciences →</a>
+        </div>
+      </div>
+
+      <!-- Core Peptides -->
+      <div class="vendor-card">
+        <div style="height:6px;background:var(--primary);"></div>
+        <div class="vendor-header">
+          <span class="vendor-badge badge-intl">🔬 Lab Grade</span>
+          <h3 style="font-size:1.8rem;color:var(--primary);">Core Peptides</h3>
+          <p style="color:#64748b;margin-top:8px;">Research-grade quality with strong documentation and broad peptide range.</p>
+        </div>
+        <div class="vendor-body">
+          <div class="product-tags">
+            <span class="product-tag">BPC-157</span>
+            <span class="product-tag">GHK-Cu</span>
+            <span class="product-tag">Epithalon</span>
+            <span class="product-tag">Selank</span>
+            <span class="product-tag">Semax</span>
+            <span class="product-tag">DSIP</span>
+            <span class="product-tag">PT-141</span>
+          </div>
+          <ul class="checklist">
+            <li>Independent lab verified purity</li>
+            <li>Lyophilised and sealed for stability</li>
+            <li>Discreet packaging</li>
+            <li>Competitive pricing on bundles</li>
+          </ul>
+          <a href="https://www.corepeptides.com" target="_blank" rel="noopener" class="shop-btn" style="background:var(--primary);color:white;">Shop Core Peptides →</a>
+        </div>
+      </div>
+
+      <!-- Swiss Chems -->
+      <div class="vendor-card">
+        <div style="height:6px;background:#059669;"></div>
+        <div class="vendor-header">
+          <span class="vendor-badge badge-eu">🌍 Ships Worldwide</span>
+          <h3 style="font-size:1.8rem;color:#059669;">Swiss Chems</h3>
+          <p style="color:#64748b;margin-top:8px;">International shipping, wide peptide and nootropic catalogue.</p>
+        </div>
+        <div class="vendor-body">
+          <div class="product-tags">
+            <span class="product-tag">BPC-157</span>
+            <span class="product-tag">TB-500</span>
+            <span class="product-tag">CJC-1295</span>
+            <span class="product-tag">Ipamorelin</span>
+            <span class="product-tag">Melanotan II</span>
+            <span class="product-tag">Tesamorelin</span>
+          </div>
+          <ul class="checklist">
+            <li>Purity guaranteed &gt;98% per batch</li>
+            <li>Ships to most countries</li>
+            <li>Multiple payment methods including crypto</li>
+            <li>Volume discounts available</li>
+          </ul>
+          <a href="https://swisschems.is" target="_blank" rel="noopener" class="shop-btn" style="background:#059669;color:white;">Shop Swiss Chems →</a>
+        </div>
+      </div>
+
+      <!-- Limitless Life -->
+      <div class="vendor-card">
+        <div style="height:6px;background:#7c3aed;"></div>
+        <div class="vendor-header">
+          <span class="vendor-badge" style="background:#ede9fe;color:#4c1d95;">🧬 Premium Range</span>
+          <h3 style="font-size:1.8rem;color:#7c3aed;">Limitless Life</h3>
+          <p style="color:#64748b;margin-top:8px;">Premium peptides with a focus on longevity and cognitive research compounds.</p>
+        </div>
+        <div class="vendor-body">
+          <div class="product-tags">
+            <span class="product-tag">BPC-157</span>
+            <span class="product-tag">Cerebrolysin</span>
+            <span class="product-tag">Dihexa</span>
+            <span class="product-tag">NSI-189</span>
+            <span class="product-tag">GHK-Cu</span>
+            <span class="product-tag">Thymalin</span>
+          </div>
+          <ul class="checklist">
+            <li>Biohacker-focused catalogue</li>
+            <li>Detailed product documentation</li>
+            <li>Nootropic + peptide combo stacks</li>
+            <li>US domestic and international shipping</li>
+          </ul>
+          <a href="https://limitlesslifenootropics.com" target="_blank" rel="noopener" class="shop-btn" style="background:#7c3aed;color:white;">Shop Limitless Life →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 style="font-size:2.2rem;margin-bottom:8px;">Quick Comparison</h2>
+    <p style="color:#64748b;margin-bottom:24px;">At a glance — key factors for research procurement decisions.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>3rd-Party Tested</th>
+          <th>CoA Available</th>
+          <th>Ships Intl.</th>
+          <th>BPC-157</th>
+          <th>TB-500</th>
+          <th>Crypto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Peptide Sciences</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="cross">US only</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td><strong>Core Peptides</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td><strong>Swiss Chems</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Limitless Life</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="disclaimer">
+      <strong>⚠️ RESEARCH USE ONLY:</strong> All vendors listed supply compounds strictly for laboratory and research purposes. Products are not approved for human consumption. Peptides.site earns affiliate commission on purchases made through some links on this page. This does not affect our recommendations or editorial independence.
+    </div>
+
+  </div>
+
+  <footer>
+    <p style="opacity:0.7;">© 2026 Peptides.site — For laboratory research purposes only.</p>
+    <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
+  </footer>
+</body>
+</html>
