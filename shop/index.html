@@ -165,6 +165,68 @@
       font-size: 0.95rem;
       text-align: center;
     }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+      color: var(--foreground);
+      padding: 8px;
+      line-height: 1;
+    }
+    .mobile-nav {
+      display: none;
+      background: white;
+      border-top: 1px solid var(--border);
+    }
+    [data-theme="dark"] .mobile-nav { background: #0F172A; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      padding: 14px 24px;
+      color: var(--foreground);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--accent); background: var(--muted); }
+
+    /* TABLE SCROLL WRAPPER */
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 16px;
+      margin: 40px 0 80px;
+    }
+    .table-scroll .compare-table { margin: 0; border-radius: 0; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .container { padding: 0 16px; }
+
+      .page-hero { padding: 48px 0 32px; }
+
+      .vendor-grid {
+        grid-template-columns: 1fr;
+        padding: 32px 0;
+        gap: 20px;
+      }
+      .vendor-card:hover { transform: none; box-shadow: none; }
+      .vendor-header { padding: 20px 20px 0; }
+      .vendor-body { padding: 0 20px 20px; }
+      .shop-btn { padding: 16px; font-size: 1.05rem; }
+
+      .compare-table th, .compare-table td { padding: 10px 12px; font-size: 0.82rem; }
+
+      .disclaimer { margin: 0 0 40px; font-size: 0.9rem; }
+      footer { padding: 40px 0 24px; }
+    }
   </style>
 </head>
 <body>
@@ -177,6 +239,13 @@
         <li><a href="/#research">Research</a></li>
         <li><a href="/shop/" style="color:var(--accent);font-weight:700;">Shop</a></li>
       </ul>
+      <button class="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="/protocols/">Protocols</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/#research">Research</a>
+      <a href="/shop/" style="color:var(--accent);font-weight:700;">Shop</a>
     </div>
   </nav>
 
@@ -307,6 +376,7 @@
     <h2 style="font-size:2.2rem;margin-bottom:8px;">Quick Comparison</h2>
     <p style="color:#64748b;margin-bottom:24px;">At a glance — key factors for research procurement decisions.</p>
 
+    <div class="table-scroll">
     <table class="compare-table">
       <thead>
         <tr>
@@ -358,6 +428,7 @@
         </tr>
       </tbody>
     </table>
+    </div><!-- /table-scroll -->
 
     <div class="disclaimer">
       <strong>⚠️ RESEARCH USE ONLY:</strong> All vendors listed supply compounds strictly for laboratory and research purposes. Products are not approved for human consumption. Peptides.site earns affiliate commission on purchases made through some links on this page. This does not affect our recommendations or editorial independence.
@@ -369,5 +440,10 @@
     <p style="opacity:0.7;">© 2026 Peptides.site — For laboratory research purposes only.</p>
     <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
   </footer>
+  <script>
+    function toggleNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
