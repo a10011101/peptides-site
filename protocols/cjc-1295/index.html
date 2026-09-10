@@ -54,14 +54,43 @@
     .cta-card a{display:block;background:white;color:var(--orange);text-align:center;padding:9px;border-radius:8px;font-size:.825rem;font-weight:700}
     footer{background:#1a202c;color:#94a3b8;padding:24px;text-align:center;font-size:.775rem}
     @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static}.nav-links{display:none}}
+    /* PEP-HEADER-UNIFORM */
+  .pep-header{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #C7D2FE;position:sticky;top:0;z-index:1000;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;}
+  .pep-nav-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .pep-logo{font-family:'Crimson Pro',serif;font-size:1.75rem;font-weight:700;color:#4F46E5;text-decoration:none;letter-spacing:-0.02em;}
+  .pep-logo span{color:#EA580C;}
+  .pep-links{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+  .pep-links a{color:#1E1B4B;text-decoration:none;font-weight:500;font-size:1rem;transition:color .2s;}
+  .pep-links a:hover{color:#EA580C;}
+  .pep-shop{color:#EA580C !important;font-weight:700;}
+  .pep-hb{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#1E1B4B;padding:8px;line-height:1;}
+  .pep-mobile{display:none;background:#fff;border-top:1px solid #C7D2FE;}
+  .pep-mobile.open{display:block;}
+  .pep-mobile a{display:block;padding:14px 24px;color:#1E1B4B;text-decoration:none;font-weight:500;border-bottom:1px solid #C7D2FE;}
+  @media(max-width:768px){.pep-links{display:none;}.pep-hb{display:block;}}
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="disclaimer-bar">⚠️ <strong>Research Use Only.</strong> Not for human use or medical advice.</div>
-  <nav><div class="nav-inner">
-    <a href="/" class="nav-logo">peptides<span>.site</span></a>
-    <ul class="nav-links"><li><a href="/protocols/">Protocols</a></li><li><a href="/calculator/">Calculator</a></li><li><a href="/#lead-capture">Newsletter</a></li></ul>
-  </div></nav>
+    <nav class="pep-header">
+    <div class="pep-nav-wrap">
+      <a href="/" class="pep-logo">peptides<span>.site</span></a>
+      <ul class="pep-links">
+        <li><a href="/protocols/">Protocols</a></li>
+        <li><a href="/calculator/">Calculator</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/shop/" class="pep-shop">Shop</a></li>
+      </ul>
+      <button class="pep-hb" onclick="var m=this.closest('.pep-header').querySelector('.pep-mobile');m.classList.toggle('open');" aria-label="Menu">&#9776;</button>
+    </div>
+    <div class="pep-mobile">
+      <a href="/protocols/">Protocols</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shop/" class="pep-shop">Shop</a>
+    </div>
+  </nav>
   <div class="layout">
     <div class="main">
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/protocols/">Protocols</a> › CJC-1295</div>
