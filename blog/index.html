@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Research Blog: Dosage, Protocols & Guides | Peptides.site</title>
+  <meta name="description" content="Evidence-based peptide research guides: dosage charts, reconstitution, side effects, and protocols for BPC-157, TB-500, CJC-1295, MOTS-c and more. Research use only.">
+  <link rel="canonical" href="https://peptides.site/blog/">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    :root {
+      --primary: #4F46E5; --primary-foreground: #FFFFFF; --accent: #EA580C;
+      --background: #EEF2FF; --foreground: #1E1B4B; --muted: #EBEEF8;
+      --border: #C7D2FE; --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+      background: var(--background); color: var(--foreground);
+      line-height: 1.7; font-size: 1.1rem;
+    }
+    h1, h2, h3 { font-family: 'Crimson Pro', serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    nav {
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
+    }
+    .nav-content { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .logo { font-family: 'Crimson Pro', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--foreground); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .blog-hero { padding: 80px 0 40px; text-align: center; }
+    .blog-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 16px; }
+    .blog-hero p { font-size: 1.25rem; color: #475569; max-width: 680px; margin: 0 auto; }
+    .post-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px; padding: 40px 0 80px;
+    }
+    .post-card {
+      background: white; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border); transition: all 0.3s ease; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+    }
+    .post-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15); }
+    .post-card .bar { height: 6px; background: var(--primary); }
+    .post-card .body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .post-card .tag { font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+    .post-card h2 { font-size: 1.5rem; margin-bottom: 10px; color: var(--foreground); }
+    .post-card p { color: #64748b; font-size: 0.98rem; flex: 1; }
+    .post-card .read { margin-top: 16px; color: var(--primary); font-weight: 600; }
+    .disclaimer {
+      background: #fef2f2; border-left: 6px solid #dc2626; padding: 24px;
+      margin: 20px auto 60px; font-size: 0.95rem; color: #7f1d1d; border-radius: 8px;
+    }
+    footer { background: var(--foreground); color: #e0e7ff; padding: 80px 0 40px; font-size: 0.95rem; }
+    .hamburger { display: none; background: none; border: none; font-size: 1.7rem; cursor: pointer; color: var(--foreground); padding: 8px; line-height: 1; }
+    .mobile-nav { display: none; background: white; border-top: 1px solid var(--border); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 14px 24px; color: var(--foreground); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; } .hamburger { display: block; } .container { padding: 0 16px; }
+      .blog-hero { padding: 48px 0 24px; } .post-grid { grid-template-columns: 1fr; padding: 24px 0 48px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-content">
+      <a href="/" class="logo">peptides<span>.site</span></a>
+      <ul class="nav-links">
+        <li><a href="/protocols/">Protocols</a></li>
+        <li><a href="/calculator/">Calculator</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/shop/" style="color:var(--accent);font-weight:700;">Shop</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="/protocols/">Protocols</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shop/" style="color:var(--accent);font-weight:700;">Shop</a>
+    </div>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Peptide Research Blog</h1>
+      <p>Evidence-based dosage guides, reconstitution protocols, and side-effect research for the research community.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="post-grid" id="postGrid">
+      <!-- POST_CARDS -->
+      <a class="post-card" href="/blog/what-are-peptides/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Guide</div>
+          <h2>What Are Peptides? A Complete Research Guide</h2>
+          <p>What peptides are, how they differ from proteins, and the main research categories.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/peptide-dosage-calculator-guide/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Guide</div>
+          <h2>How to Use a Peptide Dosage Calculator (Step by Step)</h2>
+          <p>Step by step: turn vial size, water volume, and target dose into an exact injection amount.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/how-to-reconstitute-peptides/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Guide</div>
+          <h2>How to Reconstitute Peptides with Bacteriostatic Water</h2>
+          <p>How to mix lyophilized peptides with bacteriostatic water, safely and accurately.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/bpc-157-side-effects/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Side Effects</div>
+          <h2>BPC-157 Side Effects: What Research Shows</h2>
+          <p>What the research literature reports on BPC-157 tolerability and safety signals.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/bpc-157-dosage-chart/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>BPC-157 Dosage Chart and Protocol Guide</h2>
+          <p>Research-reported BPC-157 dosing ranges in a clear reference chart.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/bpc-157-benefits/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Research</div>
+          <h2>BPC-157 Benefits: A Research Overview</h2>
+          <p>A research overview of BPC-157 and tissue, tendon, and gut repair studies.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/tb-500-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>TB-500 Dosage: Research Protocol and Chart</h2>
+          <p>Research protocols and a loading vs maintenance dosing chart for TB-500.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/tb-500-side-effects/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Side Effects</div>
+          <h2>TB-500 Side Effects: What the Research Says</h2>
+          <p>What studies and reports say about TB-500 tolerability.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/cjc-1295-side-effects/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Side Effects</div>
+          <h2>CJC-1295 Side Effects: A Research Guide</h2>
+          <p>Common research-reported effects of CJC-1295 and what drives them.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/cjc-1295-for-muscle-growth/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Research</div>
+          <h2>CJC-1295 for Muscle Growth: Research Overview</h2>
+          <p>How CJC-1295 is studied in the context of growth hormone and lean mass.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/cjc-1295-ipamorelin-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>CJC-1295 and Ipamorelin Dosage: The Classic Stack</h2>
+          <p>Why CJC-1295 and ipamorelin are researched together, with a dosing reference.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/igf-1-lr3-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>IGF-1 LR3 Dosage: Research Protocol Guide</h2>
+          <p>Research dosing ranges and handling notes for IGF-1 LR3.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/tesamorelin-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>Tesamorelin Dosage: Protocol and Chart</h2>
+          <p>Research-reported tesamorelin dosing and a reference chart.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/what-does-tesamorelin-do/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Research</div>
+          <h2>What Does Tesamorelin Do? Mechanism and Research</h2>
+          <p>The mechanism of tesamorelin as a GHRH analog, explained.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/tesamorelin-vs-ipamorelin/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Compare</div>
+          <h2>Tesamorelin vs Ipamorelin: Key Differences</h2>
+          <p>Two growth hormone peptides compared by mechanism, use, and profile.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/mots-c-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>MOTS-c Dosage Chart and Protocol Guide</h2>
+          <p>A MOTS-c dosing chart and protocol overview for research.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/mots-c-side-effects/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Side Effects</div>
+          <h2>MOTS-c Side Effects: A Research Overview</h2>
+          <p>What early research reports about MOTS-c tolerability.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/mots-c-before-and-after/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Research</div>
+          <h2>MOTS-c Before and After: What Research Reports</h2>
+          <p>What research and reports describe over a MOTS-c study period.</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/ss-31-peptide-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>SS-31 Peptide Dosage: Research Protocol</h2>
+          <p>Research dosing ranges for the mitochondrial peptide SS-31 (elamipretide).</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+      <a class="post-card" href="/blog/dsip-peptide-dosage/">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="tag">Dosage</div>
+          <h2>DSIP Peptide Dosage: Delta Sleep-Inducing Peptide Guide</h2>
+          <p>Research dosing notes for delta sleep-inducing peptide (DSIP).</p>
+          <span class="read">Read guide &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="disclaimer container">
+    <strong>⚠️ RESEARCH USE ONLY:</strong> All content on peptides.site is for educational and research purposes only. Peptides discussed are not approved for human consumption. This is not medical advice. Consult qualified professionals.
+  </div>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p style="opacity:0.7;">© 2026 Peptides.site. For laboratory research purposes only.</p>
+      <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+  </script>
+</body>
+</html>
