@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinealon Protocol: Dosing, Solubility &amp; Research Guide | Peptides.site</title>
+  <meta name="description" content="Pinealon research protocol: solubility in bacteriostatic water or saline, research-reported dosing course, and safety. Research use only.">
+  <link rel="canonical" href="https://peptides.site/protocols/pinealon/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f8f9fc;--surface:#fff;--border:#e2e8f0;--text:#1a202c;--text-muted:#64748b;--accent:#2563eb;--accent-light:#eff6ff;--teal:#0d9488;--teal-light:#f0fdfa;--radius:10px}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .disclaimer-bar{background:#fff7ed;border-bottom:1px solid #fed7aa;padding:8px 24px;text-align:center;font-size:.78rem;color:#9a3412;font-weight:500}
+    .layout{max-width:1100px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:start}
+    .breadcrumb{font-size:.8rem;color:var(--text-muted);margin-bottom:16px}.breadcrumb a{color:var(--text-muted)}
+    .proto-header{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px;margin-bottom:28px}
+    .proto-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:20px;background:var(--teal-light);color:var(--teal);font-family:'Space Mono',monospace;margin-bottom:14px}
+    .proto-header h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+    .proto-header .subtitle{font-size:1rem;color:var(--text-muted);margin-bottom:20px}
+    .key-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+    .kf{background:var(--bg);border-radius:8px;padding:12px 14px}
+    .kf .k{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:3px}
+    .kf .v{font-family:'Space Mono',monospace;font-size:.85rem;font-weight:700;color:var(--text)}
+    .section{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
+    .section h2{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+    .section p{font-size:.9rem;color:var(--text-muted);margin-bottom:12px}
+    .section p:last-child{margin-bottom:0}
+    .data-table{width:100%;border-collapse:collapse;font-size:.85rem}
+    .data-table th{text-align:left;padding:10px 14px;background:var(--bg);border-bottom:2px solid var(--border);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted)}
+    .data-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:nth-child(even) td{background:#fafbfc}
+    .data-table .mono{font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700}
+    .step-list{list-style:none;counter-reset:steps}
+    .step-list li{counter-increment:steps;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);font-size:.875rem}
+    .step-list li:last-child{border-bottom:none}
+    .step-list li::before{content:counter(steps);min-width:28px;height:28px;background:var(--accent);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px}
+    .solubility-note{background:#f0fdfa;border:1px solid #99f6e4;border-left:5px solid var(--teal);border-radius:8px;padding:16px 20px;font-size:.86rem;color:#134e4a;margin-top:6px}
+    .solubility-warn{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid #ea580c;border-radius:8px;padding:16px 20px;font-size:.86rem;color:#7c2d12;margin-top:6px}
+    .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:var(--accent-light);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:.78rem;font-weight:600}
+    .sidebar{position:sticky;top:20px;display:flex;flex-direction:column;gap:16px}
+    .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+    .sidebar-card h3{font-size:.875rem;font-weight:700;margin-bottom:14px}
+    .sidebar-card a{display:block;padding:7px 0;font-size:.825rem;color:var(--text-muted);border-bottom:1px solid var(--border)}
+    .sidebar-card a:last-child{border-bottom:none}
+    .sidebar-card a:hover{color:var(--accent);text-decoration:none}
+    .cta-card{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);border-radius:12px;padding:20px;color:white}
+    .cta-card h3{font-size:.875rem;font-weight:700;margin-bottom:8px;color:white}
+    .cta-card p{font-size:.775rem;color:#bfdbfe;margin-bottom:14px}
+    .cta-card a{display:block;background:white;color:var(--accent);text-align:center;padding:9px;border-radius:8px;font-size:.825rem;font-weight:700}
+    footer{background:#1a202c;color:#94a3b8;padding:24px;text-align:center;font-size:.775rem}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static}}
+    /* PEP-HEADER-UNIFORM */
+  .pep-header{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #C7D2FE;position:sticky;top:0;z-index:1000;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;}
+  .pep-nav-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .pep-logo{font-family:'Crimson Pro',serif;font-size:1.75rem;font-weight:700;color:#4F46E5;text-decoration:none;letter-spacing:-0.02em;}
+  .pep-logo span{color:#EA580C;}
+  .pep-links{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+  .pep-links a{color:#1E1B4B;text-decoration:none;font-weight:500;font-size:1rem;transition:color .2s;}
+  .pep-links a:hover{color:#EA580C;}
+  .pep-shop{color:#EA580C !important;font-weight:700;}
+  .pep-hb{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#1E1B4B;padding:8px;line-height:1;}
+  .pep-mobile{display:none;background:#fff;border-top:1px solid #C7D2FE;}
+  .pep-mobile.open{display:block;}
+  .pep-mobile a{display:block;padding:14px 24px;color:#1E1B4B;text-decoration:none;font-weight:500;border-bottom:1px solid #C7D2FE;}
+  @media(max-width:768px){.pep-links{display:none;}.pep-hb{display:block;}}
+  </style>
+</head>
+<body>
+  <div class="disclaimer-bar">⚠️ <strong>Research Use Only.</strong> Not for human use or medical advice.</div>
+    <nav class="pep-header">
+    <div class="pep-nav-wrap">
+      <a href="/" class="pep-logo">peptides<span>.site</span></a>
+      <ul class="pep-links">
+        <li><a href="/protocols/">Protocols</a></li>
+        <li><a href="/calculator/">Calculator</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/shop/" class="pep-shop">Shop</a></li>
+      </ul>
+      <button class="pep-hb" onclick="var m=this.closest('.pep-header').querySelector('.pep-mobile');m.classList.toggle('open');" aria-label="Menu">&#9776;</button>
+    </div>
+    <div class="pep-mobile">
+      <a href="/protocols/">Protocols</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shop/" class="pep-shop">Shop</a>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <div class="main">
+      <div class="breadcrumb"><a href="/">Home</a> › <a href="/protocols/">Protocols</a> › Pinealon</div>
+
+      <div class="proto-header">
+        <span class="proto-badge">Bioregulator</span>
+        <h1>Pinealon</h1>
+        <div class="subtitle">Short peptide bioregulator (Glu-Asp-Arg) studied for brain and cellular ageing</div>
+        <div class="key-facts">
+          <div class="kf"><div class="k">Class</div><div class="v">Peptide bioregulator</div></div>
+          <div class="kf"><div class="k">Mol. Weight</div><div class="v">~418 Da</div></div>
+          <div class="kf"><div class="k">Half-Life</div><div class="v">Short</div></div>
+          <div class="kf"><div class="k">Storage</div><div class="v">-20 C lyophilised</div></div>
+          <div class="kf"><div class="k">Reconstitution</div><div class="v">BAC water / saline</div></div>
+          <div class="kf"><div class="k">Course</div><div class="v">10-20 days</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🔬 Overview</h2>
+        <p>Pinealon is a short tripeptide bioregulator studied in Russian research for effects on brain cells, cognition, and cellular ageing. It belongs to the family of short peptide bioregulators that are proposed to influence gene expression in specific tissues.</p><p>It is typically studied in short courses rather than continuous use.</p>
+      </div>
+
+      <div class="section">
+        <h2>💉 Research-Reported Dosing</h2>
+        <table class="data-table">
+          <thead><tr><th>Protocol</th><th>Dose</th><th>Frequency</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Lower research</td><td class="mono">5 mg</td><td>Once daily</td><td>Introductory course</td></tr>
+            <tr><td>Common research</td><td class="mono">10 mg</td><td>Once daily</td><td>Frequently cited</td></tr>
+            <tr><td>Course length</td><td class="mono">10-20 days</td><td>Daily</td><td>Repeated periodically</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px">Figures are drawn from research literature and community protocols. They are not dosing recommendations. Use the <a href="/calculator/">dosage calculator</a> to convert any amount into a syringe volume.</p>
+      </div>
+
+      <div class="section">
+        <h2>⚗️ Reconstitution &amp; Solubility</h2>
+        <ol class="step-list">
+          <li>Bring vial and diluent to room temperature</li>
+          <li>Swab stoppers and let dry</li>
+          <li>Add bacteriostatic water or sterile saline down the vial wall</li>
+          <li>Swirl gently until clear</li>
+          <li>Refrigerate at 2 to 8 C after reconstitution</li>
+        </ol><div class="solubility-note"><strong>Solubility:</strong> pinealon is a short, water-soluble peptide and reconstitutes easily in bacteriostatic water or saline. No co-solvent required.</div>
+      </div>
+
+      <div class="section">
+        <h2>📍 Administration</h2>
+        <p>Studied by subcutaneous injection in short daily courses. Convert amounts with the <a href="/calculator/">calculator</a>.</p>
+      </div>
+
+      <div class="section">
+        <h2>📚 Research Notes</h2>
+        <p>Russian research has examined pinealon and related bioregulators for neuroprotection and cognition in ageing models. Independent Western clinical data is limited.</p>
+      </div>
+
+      <div class="section" style="background:#fff7ed;border-color:#fed7aa">
+        <h2>⚠️ Safety &amp; Disclaimer</h2>
+        <p>Pinealon is a research compound and is not approved for human use in most countries. This is not medical advice. Handle as a research chemical only.</p>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="cta-card">
+        <h3>🧮 Dosage Calculator</h3>
+        <p>Get exact injection volumes and IU markings for your vial.</p>
+        <a href="/calculator/">Open Calculator →</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>Explore Protocols</h3>
+        <a href="/protocols/">All protocols</a>
+        <a href="/protocols/bpc-157/">BPC-157</a>
+        <a href="/protocols/tb-500/">TB-500</a>
+        <a href="/protocols/cjc-1295/">CJC-1295</a>
+        <a href="/protocols/ipamorelin/">Ipamorelin</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🧴 Solubility at a glance</h3>
+        <p style="font-size:.8rem;color:var(--text-muted);margin:0">Water soluble. Reconstitutes in bacteriostatic water or saline.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer><p>© 2026 <a href="/" style="color:#60a5fa">Peptides.site</a>. For research purposes only. Not medical advice. Not for human use.</p></footer>
+  <script defer src="/lead-magnet.js"></script>
+</body>
+</html>
