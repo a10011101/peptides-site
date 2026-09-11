@@ -201,7 +201,7 @@
             <div class="field-group">
               <label>Research Subject Weight</label>
               <div class="input-with-unit">
-                <input type="number" id="weight" value="80" min="1" oninput="calculate()">
+                <input type="number" id="weight" placeholder="optional" min="1" oninput="calculate()">
                 <div class="unit-toggle">
                   <button class="active" id="unitKg" onclick="setUnit('kg')">kg</button>
                   <button id="unitLbs" onclick="setUnit('lbs')">lbs</button>
@@ -387,9 +387,12 @@
     let weightUnit = 'kg';
 
     function setUnit(u) {
-      const w = parseFloat(document.getElementById('weight').value) || 80;
-      if (u === 'lbs' && weightUnit === 'kg') document.getElementById('weight').value = Math.round(w * 2.205);
-      if (u === 'kg' && weightUnit === 'lbs') document.getElementById('weight').value = Math.round(w / 2.205);
+      const raw = document.getElementById('weight').value;
+      const w = parseFloat(raw);
+      if (raw !== '' && !isNaN(w)) {
+        if (u === 'lbs' && weightUnit === 'kg') document.getElementById('weight').value = Math.round(w * 2.205);
+        if (u === 'kg' && weightUnit === 'lbs') document.getElementById('weight').value = Math.round(w / 2.205);
+      }
       weightUnit = u;
       document.getElementById('unitKg').classList.toggle('active', u === 'kg');
       document.getElementById('unitLbs').classList.toggle('active', u === 'lbs');
@@ -418,15 +421,17 @@
       const waterMl = parseFloat(document.getElementById('waterMl').value) || 2;
       const doseMcg = parseFloat(document.getElementById('doseMcg').value) || 250;
       const freq = parseFloat(document.getElementById('frequency').value) || 1;
-      let weightVal = parseFloat(document.getElementById('weight').value) || 80;
-      if (weightUnit === 'lbs') weightVal = weightVal / 2.205;
+      const weightRaw = document.getElementById('weight').value;
+      let weightVal = parseFloat(weightRaw);
+      const hasWeight = weightRaw !== '' && !isNaN(weightVal) && weightVal > 0;
+      if (hasWeight && weightUnit === 'lbs') weightVal = weightVal / 2.205;
 
       const concMcgMl = (vialMg * 1000) / waterMl;
       const volPerInj = doseMcg / concMcgMl;
       const iuPerInj = volPerInj * 100;
       const totalDoses = (vialMg * 1000) / doseMcg;
       const daysSupply = totalDoses / freq;
-      const dosePerKg = doseMcg / weightVal;
+      const dosePerKg = hasWeight ? (doseMcg / weightVal) : null;
       const dailyDose = doseMcg * freq;
       const weeklyDose = dailyDose * 7;
       const injPerWeek = freq * 7;
@@ -436,7 +441,7 @@
       document.getElementById('res-iu').textContent = iuPerInj.toFixed(1) + ' IU';
       document.getElementById('res-doses').textContent = Math.round(totalDoses).toLocaleString() + ' doses';
       document.getElementById('res-days').textContent = Math.floor(daysSupply) + ' days';
-      document.getElementById('res-perkg').textContent = dosePerKg.toFixed(2) + ' mcg/kg';
+      document.getElementById('res-perkg').textContent = (dosePerKg !== null) ? (dosePerKg.toFixed(2) + ' mcg/kg') : '—';
       document.getElementById('ws-daily').textContent = dailyDose.toLocaleString() + ' mcg';
       document.getElementById('ws-weekly').textContent = Math.round(weeklyDose).toLocaleString() + ' mcg';
       document.getElementById('ws-inj').textContent = injPerWeek.toFixed(1) + 'x/week';
