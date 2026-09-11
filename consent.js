@@ -12,26 +12,22 @@
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
-  // Set default consent = denied for all storage categories
+  // Analytics granted by default; ads still denied (no ad networks in use)
   window.gtag('consent', 'default', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
-    analytics_storage: 'denied',
+    analytics_storage: 'granted',
     functionality_storage: 'granted',
-    security_storage: 'granted',
-    wait_for_update: 500
+    security_storage: 'granted'
   });
 
-  // If user has already consented in a previous visit → update to granted immediately
+  // If user previously denied, honour that (undo via Privacy page reset link)
   try {
     var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'granted') {
+    if (stored === 'denied') {
       window.gtag('consent', 'update', {
-        ad_storage: 'granted',
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
-        analytics_storage: 'granted'
+        analytics_storage: 'denied'
       });
     }
   } catch (e) { /* localStorage blocked */ }

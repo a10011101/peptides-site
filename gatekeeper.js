@@ -234,17 +234,12 @@
   function boot() {
     inject();
     injectPersistentBar();
-    // Show cookie banner only if age gate is already passed
-    // (either previously accepted, or lead-magnet path where we skipped the gate)
-    try {
-      if (localStorage.getItem(STORAGE_KEY) === 'accepted' || /\/lead-magnets\//i.test(location.pathname)) {
-        injectCookieBanner();
-      }
-    } catch (e) {}
+    // Cookie banner disabled: GA analytics is opt-out (via /privacy/) rather than opt-in
+    // The banner code remains for later re-enablement if consent-mode is restored.
   }
 
-  // Called by the age-gate accept handler to chain into the cookie banner
-  window.pepShowCookieBanner = injectCookieBanner;
+  // No-op — cookie banner suppressed. Kept for age-gate accept handler compat.
+  window.pepShowCookieBanner = function () {};
 
   if (document.body) {
     boot();
