@@ -9,7 +9,8 @@
   };
 
   var css = ''
-    + '.pep-lm-wrap{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;}'
+    + '.pep-lm-wrap{position:fixed;bottom:calc(60px + env(safe-area-inset-bottom,0px));right:20px;z-index:2147483644;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;}'
+    + '@media (max-width:520px){.pep-lm-wrap{bottom:calc(56px + env(safe-area-inset-bottom,0px));right:12px;}}'
     + '.pep-lm-pill{background:#EA580C;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 10px 30px -8px rgba(234,88,12,0.6);font-family:inherit;}'
     + '.pep-lm-pill:hover{opacity:0.92;}'
     + '.pep-lm-card{display:none;background:#fff;border:1px solid #C7D2FE;border-left:6px solid #4F46E5;border-radius:16px;padding:22px;max-width:330px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);position:relative;}'
