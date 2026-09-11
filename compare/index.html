@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Price Comparison Index — peptides.site</title>
+  <meta name="description" content="Compare live prices across UK and global research peptide vendors. Sortable by £/mg. Research use only.">
+  <link rel="canonical" href="https://peptides.site/compare/">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/consent.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NTVMRE7L5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0NTVMRE7L5');
+  </script>
+  <style>
+    :root{--primary:#4F46E5;--accent:#EA580C;--fg:#1E1B4B;--muted:#6b6b85;--border:#E5E7EB;--bg:#FAFAF9;--table-alt:#F5F6FB}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:var(--fg);background:var(--bg);line-height:1.65}
+    .pep-header{background:#fff;border-bottom:1px solid var(--border);padding:14px 24px;position:sticky;top:0;z-index:100}
+    .pep-header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .pep-logo{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--fg);text-decoration:none}
+    .pep-logo span{color:var(--accent)}
+    .pep-nav{display:flex;gap:24px;flex-wrap:wrap}
+    .pep-nav a{color:var(--fg);text-decoration:none;font-weight:500;font-size:.95rem}
+    .pep-nav a:hover{color:var(--accent)}
+    .pep-nav a.active{color:var(--accent)}
+    .disclaimer-bar{background:#fff7ed;border-bottom:1px solid #fed7aa;padding:10px 24px;text-align:center;font-size:.85rem;color:#9a3412;font-weight:600}
+    .container{max-width:1200px;margin:0 auto;padding:40px 24px 80px}
+    .hero{margin-bottom:24px}
+    .hero .kicker{color:var(--accent);font-family:'Crimson Pro',serif;font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+    h1{font-family:'Crimson Pro',serif;font-size:clamp(2rem,4vw,3rem);color:var(--fg);margin-bottom:8px;line-height:1.15}
+    .lead{color:var(--muted);font-size:1.05rem;margin-bottom:16px;max-width:820px}
+    .meta-strip{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin:12px 0 20px}
+    .meta-strip strong{color:var(--fg)}
+    .notice{background:#EEF2FF;border:1px solid #C7D2FE;border-radius:10px;padding:14px 18px;font-size:.9rem;line-height:1.55;color:#3730a3;margin:0 0 28px}
+    .notice strong{color:var(--primary)}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:#fff}
+    table.compare{width:100%;border-collapse:collapse;font-size:.95rem}
+    .compare thead th{background:#F9FAFC;text-align:left;padding:14px 16px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+    .compare td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+    .compare tr:last-child td{border-bottom:none}
+    .compare tr:nth-child(even) td{background:var(--table-alt)}
+    .compare .vendor{font-weight:600;font-family:'Crimson Pro',serif;font-size:1.05rem}
+    .compare .flag{display:inline-block;padding:2px 8px;font-size:.7rem;font-weight:700;border-radius:999px;background:#EEF2FF;color:var(--primary);margin-left:6px;letter-spacing:.05em}
+    .compare .flag.uk{background:#fff7ed;color:var(--accent)}
+    .compare .flag.eu{background:#f0fdf4;color:#15803d}
+    .compare .price{font-family:'Crimson Pro',serif;font-size:1.15rem;font-weight:700;color:var(--fg)}
+    .compare .permg{color:var(--muted);font-size:.85rem}
+    .compare .best{background:linear-gradient(90deg,#fff7ed 0%,#fff 100%)!important}
+    .compare .best .price{color:var(--accent)}
+    .compare .best-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:6px;letter-spacing:.05em}
+    .compare .stock{font-size:.85rem;font-weight:600}
+    .compare .stock.yes{color:#059669}
+    .compare .stock.no{color:#dc2626}
+    .compare .cta{display:inline-block;background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;white-space:nowrap;transition:background .15s}
+    .compare .cta:hover{background:#c2410c}
+    .content-block{margin:36px 0}
+    .content-block h2{font-family:'Crimson Pro',serif;font-size:1.5rem;margin-bottom:10px;color:var(--fg)}
+    .content-block p{margin-bottom:12px;color:var(--fg);max-width:820px}
+    .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .links a{background:#fff;border:1px solid var(--border);color:var(--fg);padding:10px 16px;border-radius:8px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .15s}
+    .links a:hover{border-color:var(--primary);color:var(--primary)}
+    .footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-size:.85rem;color:var(--muted);margin-top:60px}
+    .footer a{color:var(--muted);margin:0 8px}
+    .index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px}
+    .index-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-decoration:none;color:var(--fg);transition:all .15s;display:block}
+    .index-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 24px -12px rgba(0,0,0,.1)}
+    .index-card h3{font-family:'Crimson Pro',serif;font-size:1.2rem;margin-bottom:4px;color:var(--fg)}
+    .index-card .category{font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:8px}
+    .index-card .from-price{font-size:.9rem;color:var(--muted);margin-top:8px}
+    .index-card .from-price strong{color:var(--fg);font-size:1.1rem}
+  </style>
+</head>
+<body>
+  <header class="pep-header">
+    <div class="pep-header-inner">
+      <a href="/" class="pep-logo">peptides<span>.site</span></a>
+      <nav class="pep-nav">
+        <a href="/compare/">Compare</a>
+        <a href="/protocols/">Protocols</a>
+        <a href="/calculator/">Calculator</a>
+        <a href="/blog/">Blog</a>
+        <a href="/shop/">Shop</a>
+      </nav>
+    </div>
+  </header>
+  <div class="disclaimer-bar">⚠️ <strong>FOR RESEARCH USE ONLY.</strong> Not for human consumption. 21+ only.</div>
+  <div class="container">
+    <div class="hero">
+      <div class="kicker">Price Comparison</div>
+      <h1>Research Peptide Price Index</h1>
+      <p class="lead">Live prices across major research peptide vendors. Pick a compound to see current £/mg rankings, vendor stock, and direct links. Independent index — we do not sell peptides.</p>
+      <div class="meta-strip">
+        <span><strong>18</strong> peptides indexed</span>
+        <span><strong>1</strong> with live prices</span>
+      </div>
+    </div>
+
+    <div class="index-grid">
+      
+        <a class="index-card" href="/compare/bpc-157/">
+          <div class="category">Healing</div>
+          <h3>BPC-157</h3>
+          <div class="from-price">From <strong>£58.49</strong> · 8 vendors</div>
+        </a>
+      
+        <a class="index-card" href="/compare/tb-500/">
+          <div class="category">Healing</div>
+          <h3>TB-500 (Thymosin Beta-4)</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/retatrutide/">
+          <div class="category">Metabolic</div>
+          <h3>Retatrutide</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/semaglutide/">
+          <div class="category">Metabolic</div>
+          <h3>Semaglutide</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/tirzepatide/">
+          <div class="category">Metabolic</div>
+          <h3>Tirzepatide</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/ipamorelin/">
+          <div class="category">Growth hormone</div>
+          <h3>Ipamorelin</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/cjc-1295/">
+          <div class="category">Growth hormone</div>
+          <h3>CJC-1295 (no DAC)</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/cjc-1295-dac/">
+          <div class="category">Growth hormone</div>
+          <h3>CJC-1295 with DAC</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/igf-1-lr3/">
+          <div class="category">Growth factor</div>
+          <h3>IGF-1 LR3</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/mots-c/">
+          <div class="category">Mitochondrial</div>
+          <h3>MOTS-c</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/tesamorelin/">
+          <div class="category">Growth hormone</div>
+          <h3>Tesamorelin</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/ss-31/">
+          <div class="category">Mitochondrial</div>
+          <h3>SS-31 (Elamipretide)</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/dsip/">
+          <div class="category">Neuropeptide</div>
+          <h3>DSIP</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/dihexa/">
+          <div class="category">Nootropic</div>
+          <h3>Dihexa</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/kisspeptin-10/">
+          <div class="category">Hormonal</div>
+          <h3>Kisspeptin-10</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/pinealon/">
+          <div class="category">Nootropic</div>
+          <h3>Pinealon</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/selank/">
+          <div class="category">Anxiolytic</div>
+          <h3>Selank</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+        <a class="index-card" href="/compare/semax/">
+          <div class="category">Nootropic</div>
+          <h3>Semax</h3>
+          <div class="from-price"><em>Prices coming soon</em></div>
+        </a>
+      
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 peptides.site — Independent price index. We do not sell peptides. Research use only.</p>
+    <p><a href="/legal/">Disclaimer</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="mailto:privacy@peptides.site">Contact</a></p>
+  </footer>
+</body>
+</html>
