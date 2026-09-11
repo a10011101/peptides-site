@@ -66,6 +66,24 @@
     + '#pep-gate-reject:hover{background:#EEF2FF}'
     // Footer link
     + '#pep-gate-modal .pep-foot{margin-top:14px;font-size:.72rem;color:#6b6b85;text-align:center;line-height:1.5}'
+    // Cookie consent banner (sits above persistent bar when shown)
+    + '#pep-cookie-banner{position:fixed;left:0;right:0;z-index:2147483645;'
+    + 'background:#1E1B4B;color:#fff;padding:14px 16px;'
+    + 'font-family:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;font-size:.85rem;'
+    + 'line-height:1.5;border-top:2px solid #4F46E5;box-shadow:0 -4px 20px rgba(0,0,0,.25);'
+    + 'display:flex;flex-direction:column;gap:12px;'
+    + 'bottom:calc(env(safe-area-inset-bottom,0px) + 34px)}'
+    + '#pep-cookie-banner .pep-cb-text{max-width:900px;margin:0 auto;text-align:center}'
+    + '#pep-cookie-banner .pep-cb-text a{color:#c7d2fe;text-decoration:underline}'
+    + '#pep-cookie-banner .pep-cb-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}'
+    + '#pep-cookie-banner button{border:0;padding:11px 22px;border-radius:8px;font-weight:600;'
+    + 'font-size:.9rem;cursor:pointer;font-family:inherit;min-height:44px;min-width:110px;'
+    + '-webkit-tap-highlight-color:transparent;transition:background .15s}'
+    + '#pep-cookie-banner .pep-cb-accept{background:#4F46E5;color:#fff}'
+    + '#pep-cookie-banner .pep-cb-accept:hover{background:#3730a3}'
+    + '#pep-cookie-banner .pep-cb-reject{background:transparent;color:#fff;border:1.5px solid #c7d2fe}'
+    + '#pep-cookie-banner .pep-cb-reject:hover{background:rgba(199,210,254,.15)}'
+    + '@media (min-width:720px){#pep-cookie-banner{flex-direction:row;align-items:center;padding:14px 24px}#pep-cookie-banner .pep-cb-text{text-align:left;flex:1}#pep-cookie-banner .pep-cb-btns{flex-shrink:0}}'
     // Persistent bottom bar — mobile-friendly padding
     + '#pep-persistent-bar{position:fixed;bottom:0;left:0;right:0;z-index:2147483646;'
     + 'background:#7f1d1d;color:#fff;padding:8px 12px;text-align:center;font-size:.75rem;'
@@ -146,6 +164,8 @@
       try { localStorage.setItem(STORAGE_KEY, 'accepted'); } catch (e) {}
       overlay.remove();
       document.body.style.overflow = '';
+      // Chain into cookie banner after age gate accepted
+      if (typeof window.pepShowCookieBanner === 'function') window.pepShowCookieBanner();
     });
 
     reject.addEventListener('click', function () {
@@ -167,10 +187,64 @@
     if (h) document.body.style.paddingBottom = (h + 8) + 'px';
   }
 
+  // Cookie / analytics consent banner (GDPR / ePrivacy)
+  function injectCookieBanner() {
+    if (!window.pepConsent) return;
+    if (window.pepConsent.status() === 'granted' || window.pepConsent.status() === 'denied') return;
+    if (document.getElementById('pep-cookie-banner')) return;
+
+    var banner = document.createElement('div');
+    banner.id = 'pep-cookie-banner';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML = ''
+      + '<div class="pep-cb-text">'
+      + '<strong>🍪 Cookies &amp; analytics.</strong> We use Google Analytics to understand how visitors use the site. '
+      + 'No advertising or personalisation. See our <a href="/privacy/">Privacy Policy</a>. '
+      + 'Can we set analytics cookies?'
+      + '</div>'
+      + '<div class="pep-cb-btns">'
+      + '<button type="button" class="pep-cb-reject">Reject</button>'
+      + '<button type="button" class="pep-cb-accept">Accept</button>'
+      + '</div>';
+    document.body.appendChild(banner);
+
+    // Re-pad body so persistent bar + banner don't overlap footer
+    setTimeout(function () {
+      var pb = document.getElementById('pep-persistent-bar');
+      var cb = document.getElementById('pep-cookie-banner');
+      var total = (pb ? pb.offsetHeight : 0) + (cb ? cb.offsetHeight : 0) + 12;
+      document.body.style.paddingBottom = total + 'px';
+    }, 50);
+
+    banner.querySelector('.pep-cb-accept').addEventListener('click', function () {
+      window.pepConsent.grant();
+      banner.remove();
+      var pb = document.getElementById('pep-persistent-bar');
+      document.body.style.paddingBottom = (pb ? pb.offsetHeight + 8 : 0) + 'px';
+    });
+    banner.querySelector('.pep-cb-reject').addEventListener('click', function () {
+      window.pepConsent.deny();
+      banner.remove();
+      var pb = document.getElementById('pep-persistent-bar');
+      document.body.style.paddingBottom = (pb ? pb.offsetHeight + 8 : 0) + 'px';
+    });
+  }
+
   function boot() {
     inject();
     injectPersistentBar();
+    // Show cookie banner only if age gate is already passed
+    // (either previously accepted, or lead-magnet path where we skipped the gate)
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'accepted' || /\/lead-magnets\//i.test(location.pathname)) {
+        injectCookieBanner();
+      }
+    } catch (e) {}
   }
+
+  // Called by the age-gate accept handler to chain into the cookie banner
+  window.pepShowCookieBanner = injectCookieBanner;
 
   if (document.body) {
     boot();
