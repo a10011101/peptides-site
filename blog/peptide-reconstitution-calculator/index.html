@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Reconstitution Calculator: How to Use One Correctly | Peptides.site</title>
+  <meta name="description" content="How a peptide reconstitution calculator works, the math behind it, and a reference table of common vial sizes, BAC water volumes, and resulting concentrations. Research use only.">
+  <link rel="canonical" href="https://peptides.site/blog/peptide-reconstitution-calculator/">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/consent.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NTVMRE7L5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0NTVMRE7L5');
+  </script>
+  <style>
+    :root {
+      --primary: #4F46E5; --primary-foreground: #FFFFFF; --accent: #EA580C;
+      --background: #EEF2FF; --foreground: #1E1B4B; --muted: #EBEEF8;
+      --border: #C7D2FE; --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; background: var(--background); color: var(--foreground); line-height: 1.7; font-size: 1.1rem; }
+    h1, h2, h3 { font-family: 'Crimson Pro', serif; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-content { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .logo { font-family: 'Crimson Pro', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--foreground); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .article { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; }
+    .breadcrumb { font-size: 0.9rem; color: #64748b; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .article h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 16px; }
+    .article .meta { color: #64748b; font-size: 0.95rem; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .article h2 { font-size: 1.9rem; margin: 40px 0 16px; }
+    .article h3 { font-size: 1.4rem; margin: 28px 0 12px; }
+    .article p { margin-bottom: 20px; }
+    .article ul, .article ol { margin: 0 0 20px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: var(--primary); font-weight: 600; }
+    .article table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.98rem; }
+    .article th, .article td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+    .article th { background: var(--muted); }
+    .callout { background: white; border: 1px solid var(--border); border-left: 6px solid var(--primary); border-radius: 8px; padding: 20px 24px; margin: 28px 0; }
+    .cta-box { background: var(--primary); color: white; border-radius: var(--radius); padding: 28px; margin: 36px 0; text-align: center; }
+    .cta-box h3 { color: white; margin-bottom: 10px; }
+    .cta-box a { display: inline-block; margin-top: 12px; background: white; color: var(--primary); padding: 12px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; }
+    .related { background: var(--muted); border-radius: var(--radius); padding: 24px 28px; margin: 40px 0; }
+    .related h3 { margin-bottom: 12px; }
+    .related ul { list-style: none; margin: 0; }
+    .related li { margin-bottom: 8px; }
+    .disclaimer { background: #fef2f2; border-left: 6px solid #dc2626; padding: 24px; margin: 40px 0; font-size: 0.95rem; color: #7f1d1d; border-radius: 8px; }
+    footer { background: var(--foreground); color: #e0e7ff; padding: 60px 0 40px; font-size: 0.95rem; }
+    .hamburger { display: none; background: none; border: none; font-size: 1.7rem; cursor: pointer; color: var(--foreground); padding: 8px; line-height: 1; }
+    .mobile-nav { display: none; background: white; border-top: 1px solid var(--border); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 14px 24px; color: var(--foreground); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; } .hamburger { display: block; } .container { padding: 0 16px; }
+      .article { padding: 32px 16px; } .article table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+    /* PEP-HEADER-UNIFORM */
+  .pep-header{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #C7D2FE;position:sticky;top:0;z-index:1000;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;}
+  .pep-nav-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .pep-logo{font-family:'Crimson Pro',serif;font-size:1.75rem;font-weight:700;color:#4F46E5;text-decoration:none;letter-spacing:-0.02em;}
+  .pep-logo span{color:#EA580C;}
+  .pep-links{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+  .pep-links a{color:#1E1B4B;text-decoration:none;font-weight:500;font-size:1rem;transition:color .2s;}
+  .pep-links a:hover{color:#EA580C;}
+  .pep-shop{color:#EA580C !important;font-weight:700;}
+  .pep-hb{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#1E1B4B;padding:8px;line-height:1;}
+  .pep-mobile{display:none;background:#fff;border-top:1px solid #C7D2FE;}
+  .pep-mobile.open{display:block;}
+  .pep-mobile a{display:block;padding:14px 24px;color:#1E1B4B;text-decoration:none;font-weight:500;border-bottom:1px solid #C7D2FE;}
+  @media(max-width:768px){.pep-links{display:none;}.pep-hb{display:block;}}
+  </style>
+</head>
+<body>
+    <nav class="pep-header">
+    <div class="pep-nav-wrap">
+      <a href="/" class="pep-logo">peptides<span>.site</span></a>
+      <ul class="pep-links">
+        <li><a href="/protocols/">Protocols</a></li>
+        <li><a href="/calculator/">Calculator</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/shop/" class="pep-shop">Shop</a></li>
+      </ul>
+      <button class="pep-hb" onclick="var m=this.closest('.pep-header').querySelector('.pep-mobile');m.classList.toggle('open');" aria-label="Menu">&#9776;</button>
+    </div>
+    <div class="pep-mobile">
+      <a href="/protocols/">Protocols</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shop/" class="pep-shop">Shop</a>
+    </div>
+  </nav>
+
+  <article class="article">
+    <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Peptide Reconstitution Calculator: How to Use One Correctly</div>
+    <h1>Peptide Reconstitution Calculator: How to Use One Correctly</h1>
+    <div class="meta">Research reference &middot; Updated September 2026 &middot; ~7 min read</div>
+
+    <p>When a lyophilized peptide vial arrives in powder form, the first step before any research use is reconstitution: dissolving the powder in bacteriostatic water (BAC water) or another approved solvent to create a stable liquid solution. Getting the math right matters. Add too little solvent and each drawn volume delivers a much higher concentration than intended. Add too much and the solution becomes inconveniently dilute, requiring large draw volumes. A peptide reconstitution calculator removes the arithmetic error from the equation entirely.</p>
+
+    <p>This guide explains the underlying math, when and why it matters, and provides a reference table covering the most common research vial sizes. All figures are provided for research reference only and are not instructions for human use.</p>
+
+    <h2>What reconstitution means in peptide research</h2>
+
+    <p>Lyophilization (freeze-drying) is the standard method for stabilizing peptide compounds. Removing water from the peptide halts degradation, making it suitable for shipping and long-term storage. Before a reconstituted peptide can be used in a research context, the powder must be dissolved back into a precise volume of sterile solvent.</p>
+
+    <p>BAC water (bacteriostatic water for injection, 0.9% benzyl alcohol) is the most widely used reconstitution solvent because the benzyl alcohol content inhibits microbial growth after the vial has been opened. Sterile water for injection can be used for immediate single-use scenarios. Acetic acid solution at 0.1% or 1% is sometimes used for peptides that are poorly soluble in plain water, such as IGF-1 LR3. See the full <a href="/blog/how-to-reconstitute-peptides/">peptide reconstitution guide</a> for a step-by-step process walkthrough and solvent selection notes.</p>
+
+    <h2>The core calculation</h2>
+
+    <p>The relationship between vial content, solvent volume, and resulting concentration is straightforward:</p>
+
+    <p><strong>Concentration (mcg/mL) = Peptide mass (mcg) / Solvent volume (mL)</strong></p>
+
+    <p>A 5 mg vial contains 5,000 mcg of peptide. Adding 2 mL of BAC water gives a concentration of 2,500 mcg/mL. Adding 5 mL gives 1,000 mcg/mL. The reconstitution calculator on our <a href="/calculator/">peptide calculator page</a> handles this conversion and also calculates the exact draw volume in units (IU) needed for a target dose, based on the concentration of the reconstituted vial and the syringe being used (typically a U-100 insulin syringe where 1 IU = 0.01 mL).</p>
+
+    <h2>Reference reconstitution table</h2>
+
+    <p>The table below lists common vial sizes paired with BAC water volumes that produce convenient working concentrations. Figures are standard research-use reference values, not dosing instructions.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Vial size</th>
+          <th>BAC water added</th>
+          <th>Resulting concentration</th>
+          <th>Draw volume for 100 mcg dose</th>
+          <th>Draw volume for 250 mcg dose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2 mg (2,000 mcg)</td>
+          <td>1 mL</td>
+          <td>2,000 mcg/mL</td>
+          <td>5 IU (0.05 mL)</td>
+          <td>12.5 IU (0.125 mL)</td>
+        </tr>
+        <tr>
+          <td>5 mg (5,000 mcg)</td>
+          <td>2 mL</td>
+          <td>2,500 mcg/mL</td>
+          <td>4 IU (0.04 mL)</td>
+          <td>10 IU (0.10 mL)</td>
+        </tr>
+        <tr>
+          <td>5 mg (5,000 mcg)</td>
+          <td>5 mL</td>
+          <td>1,000 mcg/mL</td>
+          <td>10 IU (0.10 mL)</td>
+          <td>25 IU (0.25 mL)</td>
+        </tr>
+        <tr>
+          <td>10 mg (10,000 mcg)</td>
+          <td>2 mL</td>
+          <td>5,000 mcg/mL</td>
+          <td>2 IU (0.02 mL)</td>
+          <td>5 IU (0.05 mL)</td>
+        </tr>
+        <tr>
+          <td>10 mg (10,000 mcg)</td>
+          <td>5 mL</td>
+          <td>2,000 mcg/mL</td>
+          <td>5 IU (0.05 mL)</td>
+          <td>12.5 IU (0.125 mL)</td>
+        </tr>
+        <tr>
+          <td>10 mg (10,000 mcg)</td>
+          <td>10 mL</td>
+          <td>1,000 mcg/mL</td>
+          <td>10 IU (0.10 mL)</td>
+          <td>25 IU (0.25 mL)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>IU values assume a U-100 insulin syringe (1 IU = 0.01 mL). All values are research-reported reference figures, not dosing instructions.</em></p>
+
+    <div class="callout"><strong>Why concentration choice matters:</strong> Very high concentrations (above 5,000 mcg/mL) require drawing extremely small volumes per dose, which increases measurement error on standard insulin syringes. Very low concentrations require large draw volumes that can be impractical and lead to faster vial depletion. A working concentration between 1,000 and 2,500 mcg/mL tends to give draw volumes that are easy to read accurately on a U-100 syringe.</div>
+
+    <h2>Peptide-specific reconstitution notes</h2>
+
+    <p>Not all peptides behave the same way during reconstitution. A few important variations to be aware of in research contexts:</p>
+
+    <h3>BPC-157</h3>
+    <p>BPC-157 dissolves readily in BAC water. The <a href="/protocols/bpc-157/">BPC-157 protocol</a> commonly uses 5 mg vials reconstituted to 1,000 or 2,500 mcg/mL. Research doses in the 200-500 mcg range per administration draw 8-20 IU at 2,500 mcg/mL concentration. The peptide is stable for several weeks when refrigerated and protected from light after reconstitution.</p>
+
+    <h3>TB-500</h3>
+    <p>TB-500 (Thymosin Beta-4 fragment) also dissolves well in BAC water, though gently rolling rather than shaking the vial is recommended to prevent peptide chain damage from foam. The <a href="/protocols/tb-500/">TB-500 protocol</a> typically uses 5 mg or 10 mg vials. At 5 mL of BAC water per 10 mg vial, the resulting 2,000 mcg/mL concentration gives a convenient 10 IU draw per 200 mcg research unit.</p>
+
+    <h3>CJC-1295 and Ipamorelin</h3>
+    <p>These two growth-hormone-releasing peptides are frequently used together in research. Both dissolve readily in BAC water. The <a href="/protocols/cjc-1295/">CJC-1295 protocol</a> and <a href="/protocols/ipamorelin/">ipamorelin protocol</a> commonly use 2 mg vials reconstituted with 1-2 mL BAC water. Blend vials containing both peptides require a single reconstitution step but the concentration calculation still applies to each component individually based on the stated ratio on the vial label.</p>
+
+    <h3>IGF-1 LR3</h3>
+    <p>IGF-1 LR3 can be less soluble in plain BAC water and is often reconstituted first with a small amount (0.1-0.2 mL) of 0.1% acetic acid, then diluted with BAC water. The <a href="/protocols/igf-1-lr3/">IGF-1 LR3 protocol</a> notes this distinction. Vial sizes of 1 mg are common; adding 2 mL total solvent gives a 500 mcg/mL working solution.</p>
+
+    <h2>Accuracy and margin of error</h2>
+
+    <p>Even with correct math, there are practical sources of error to account for in research work. Syringes have a small dead volume in the hub and needle that affects the actual delivered amount at very small draw volumes. Reconstituted volumes are rarely exact because some solvent clings to the stopper during injection. For research tracking purposes, the <a href="/blog/peptide-dosage-chart/">peptide dosage chart</a> page provides a broader reference of research-reported doses by peptide type that can help validate whether a calculated draw volume is in a sensible range.</p>
+
+    <p>The simplest way to minimize error is to choose a reconstitution volume that puts the target research dose in the 10-30 IU draw range on a U-100 syringe. Draws below 5 IU are difficult to measure precisely, and draws above 50 IU reduce the number of doses per vial unnecessarily.</p>
+
+    <h2>Storage after reconstitution</h2>
+
+    <p>Once reconstituted, peptide solutions are significantly less stable than lyophilized powder. Standard research practice is to store reconstituted vials at 2-8 degrees Celsius (standard refrigerator temperature), away from direct light, and to use them within 4 to 6 weeks. Freeze-thaw cycling degrades most peptides and should be avoided. Lyophilized peptide powder stored at minus 20 degrees Celsius with a desiccant can remain stable for 12-24 months or longer depending on the specific compound.</p>
+
+    <div class="cta-box">
+      <h3>Use the free peptide reconstitution calculator</h3>
+      <p style="opacity:0.85;font-size:0.98rem;">Enter your vial size and BAC water volume to get the exact concentration and draw volumes for your research.</p>
+      <a href="/calculator/">Open the Calculator &rarr;</a>
+    </div>
+
+    <div class="related">
+      <h3>Related research guides</h3>
+      <ul>
+        <li><a href="/blog/how-to-reconstitute-peptides/">How to Reconstitute Peptides: Step-by-Step Guide</a></li>
+        <li><a href="/blog/peptide-dosage-chart/">Peptide Dosage Chart: Research Reference by Compound</a></li>
+        <li><a href="/blog/peptide-dosage-calculator-guide/">Peptide Dosage Calculator Guide</a></li>
+      </ul>
+    </div>
+
+    <div class="disclaimer">
+      <strong>&#9888;&#65039; RESEARCH USE ONLY:</strong> This content is for educational and research purposes only. Peptides discussed are not approved for human consumption. Nothing here is medical advice. Consult qualified professionals.
+    </div>
+  </article>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p style="opacity:0.7;">&copy; 2026 Peptides.site &mdash; For laboratory research purposes only.</p>
+      <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+  </script>
+  <script defer src="/lead-magnet.js"></script>
+  <script src="/gatekeeper.js" defer></script>
+</body>
+</html>
