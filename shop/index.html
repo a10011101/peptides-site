@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research Peptide Shop — Trusted Suppliers | Peptides.site</title>
-  <meta name="description" content="Compare trusted research peptide suppliers. Third-party tested, verified quality, fast shipping. BPC-157, TB-500, CJC-1295, Ipamorelin and more.">
+  <title>Peptides Shop — Coming Soon | Peptides.site</title>
+  <meta name="description" content="The Peptides.site shop is coming soon. Enter your email to be notified when we launch.">
   <link rel="canonical" href="https://peptides.site/shop/">
+  <meta name="robots" content="noindex">
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="/consent.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NTVMRE7L5"></script>
@@ -18,7 +19,6 @@
   <style>
     :root {
       --primary: #4F46E5;
-      --primary-foreground: #FFFFFF;
       --accent: #EA580C;
       --background: #EEF2FF;
       --foreground: #1E1B4B;
@@ -39,433 +39,231 @@
       color: var(--foreground);
       line-height: 1.7;
       font-size: 1.1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     h1, h2, h3 { font-family: 'Crimson Pro', serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-    nav {
+    /* NAV */
+    nav.pep-header {
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 100;
     }
-    [data-theme="dark"] nav { background: rgba(15,23,42,0.95); }
-    .nav-content { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-    .logo { font-family: 'Crimson Pro', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--foreground); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-
-    .page-hero {
-      padding: 80px 0 60px;
-      background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
-      text-align: center;
-    }
-    [data-theme="dark"] .page-hero { background: linear-gradient(135deg, #1E2937 0%, #0F172A 100%); }
-
-    .vendor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px;
-      padding: 60px 0;
+    [data-theme="dark"] nav.pep-header { background: rgba(15,23,42,0.95); }
+    .pep-nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .pep-logo { font-family: 'Crimson Pro', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .pep-logo span { color: var(--accent); }
+    .pep-links { display: flex; gap: 32px; list-style: none; }
+    .pep-links a { color: var(--foreground); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 1rem; }
+    .pep-links a:hover { color: var(--accent); }
+    .pep-links a.pep-shop { color: var(--primary); font-weight: 700; }
+    .pep-hb { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--foreground); }
+    .pep-mobile { display: none; flex-direction: column; gap: 0; background: white; border-top: 1px solid var(--border); }
+    [data-theme="dark"] .pep-mobile { background: #0F172A; }
+    .pep-mobile.open { display: flex; }
+    .pep-mobile a { padding: 14px 24px; color: var(--foreground); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); }
+    .pep-mobile a:hover { color: var(--accent); }
+    @media (max-width: 768px) {
+      .pep-links { display: none; }
+      .pep-hb { display: block; }
     }
 
-    .vendor-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
+    /* MAIN */
+    main {
+      flex: 1;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
     }
-    [data-theme="dark"] .vendor-card { background: #1E2937; }
-    .vendor-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15); }
-
-    .vendor-header { padding: 28px 28px 0; }
-    .vendor-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-    .badge-top { background: #fef3c7; color: #92400e; }
-    .badge-intl { background: #dbeafe; color: #1e40af; }
-    .badge-eu { background: #d1fae5; color: #065f46; }
-
-    .vendor-body { padding: 0 28px 28px; flex: 1; display: flex; flex-direction: column; }
-    .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
-    .product-tag {
-      background: var(--muted);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-family: monospace;
-    }
-    .checklist { list-style: none; margin: 16px 0 24px; color: #64748b; font-size: 0.95rem; }
-    .checklist li::before { content: "✓ "; color: #059669; font-weight: 700; }
-
-    .shop-btn {
-      display: block;
-      text-align: center;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.2s;
-      margin-top: auto;
-    }
-    .shop-btn:hover { opacity: 0.88; transform: translateY(-2px); }
-
-    .compare-table {
+    .coming-soon {
+      max-width: 560px;
       width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgb(0 0 0 / 0.07);
-      margin: 40px 0 80px;
+      text-align: center;
     }
-    [data-theme="dark"] .compare-table { background: #1E2937; }
-    .compare-table th {
+    .badge {
+      display: inline-block;
+      background: var(--muted);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .coming-soon h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: var(--foreground);
+      margin-bottom: 20px;
+    }
+    .coming-soon h1 span { color: var(--primary); }
+    .coming-soon p {
+      font-size: 1.15rem;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    [data-theme="dark"] .coming-soon p { color: #94a3b8; }
+
+    .email-form {
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto 16px;
+    }
+    .email-form input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      color: var(--foreground);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    [data-theme="dark"] .email-form input[type="email"] { background: var(--muted); border-color: var(--border); color: var(--foreground); }
+    .email-form input[type="email"]:focus { border-color: var(--primary); }
+    .email-form button {
+      padding: 14px 24px;
       background: var(--primary);
       color: white;
-      padding: 16px 20px;
-      text-align: left;
-      font-size: 0.9rem;
-      font-family: 'Atkinson Hyperlegible', sans-serif;
+      font-size: 1rem;
       font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      white-space: nowrap;
     }
-    .compare-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table tr:hover td { background: var(--muted); }
-    .tick { color: #059669; font-weight: 700; }
-    .cross { color: #dc2626; }
-
-    .disclaimer {
-      background: #fef2f2;
-      border-left: 6px solid #dc2626;
-      padding: 24px;
-      margin: 0 0 60px;
+    .email-form button:hover { opacity: 0.9; }
+    .email-form button:active { transform: scale(0.98); }
+    .email-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-note {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-bottom: 0;
+    }
+    .success-msg {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #166534;
+      font-weight: 600;
       font-size: 0.95rem;
-      color: #7f1d1d;
-      border-radius: 0 12px 12px 0;
+      max-width: 440px;
+      margin: 0 auto 16px;
+    }
+    [data-theme="dark"] .success-msg { background: #052e16; border-color: #166534; color: #86efac; }
+    .success-msg.show { display: block; }
+    .error-msg {
+      display: none;
+      color: #ef4444;
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+    .error-msg.show { display: block; }
+
+    @media (max-width: 520px) {
+      .email-form { flex-direction: column; }
+      .email-form button { width: 100%; }
     }
 
+    /* FOOTER */
     footer {
       background: var(--foreground);
-      color: #e0e7ff;
-      padding: 60px 0 32px;
-      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
       text-align: center;
+      padding: 32px 24px;
+      font-size: 0.9rem;
     }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.7rem;
-      cursor: pointer;
-      color: var(--foreground);
-      padding: 8px;
-      line-height: 1;
-    }
-    .mobile-nav {
-      display: none;
-      background: white;
-      border-top: 1px solid var(--border);
-    }
-    [data-theme="dark"] .mobile-nav { background: #0F172A; }
-    .mobile-nav.open { display: block; }
-    .mobile-nav a {
-      display: block;
-      padding: 14px 24px;
-      color: var(--foreground);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.05rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .mobile-nav a:last-child { border-bottom: none; }
-    .mobile-nav a:hover { color: var(--accent); background: var(--muted); }
-
-    /* TABLE SCROLL WRAPPER */
-    .table-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 16px;
-      margin: 40px 0 80px;
-    }
-    .table-scroll .compare-table { margin: 0; border-radius: 0; }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-      .container { padding: 0 16px; }
-
-      .page-hero { padding: 48px 0 32px; }
-
-      .vendor-grid {
-        grid-template-columns: 1fr;
-        padding: 32px 0;
-        gap: 20px;
-      }
-      .vendor-card:hover { transform: none; box-shadow: none; }
-      .vendor-header { padding: 20px 20px 0; }
-      .vendor-body { padding: 0 20px 20px; }
-      .shop-btn { padding: 16px; font-size: 1.05rem; }
-
-      .compare-table th, .compare-table td { padding: 10px 12px; font-size: 0.82rem; }
-
-      .disclaimer { margin: 0 0 40px; font-size: 0.9rem; }
-      footer { padding: 40px 0 24px; }
-    }
-    /* PEP-HEADER-UNIFORM */
-  .pep-header{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #C7D2FE;position:sticky;top:0;z-index:1000;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;}
-  .pep-nav-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px;}
-  .pep-logo{font-family:'Crimson Pro',serif;font-size:1.75rem;font-weight:700;color:#4F46E5;text-decoration:none;letter-spacing:-0.02em;}
-  .pep-logo span{color:#EA580C;}
-  .pep-links{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
-  .pep-links a{color:#1E1B4B;text-decoration:none;font-weight:500;font-size:1rem;transition:color .2s;}
-  .pep-links a:hover{color:#EA580C;}
-  .pep-shop{color:#EA580C !important;font-weight:700;}
-  .pep-hb{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#1E1B4B;padding:8px;line-height:1;}
-  .pep-mobile{display:none;background:#fff;border-top:1px solid #C7D2FE;}
-  .pep-mobile.open{display:block;}
-  .pep-mobile a{display:block;padding:14px 24px;color:#1E1B4B;text-decoration:none;font-weight:500;border-bottom:1px solid #C7D2FE;}
-  @media(max-width:768px){.pep-links{display:none;}.pep-hb{display:block;}}
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: white; }
   </style>
 </head>
 <body>
-    <nav class="pep-header">
-    <div class="pep-nav-wrap">
-      <a href="/" class="pep-logo">peptides<span>.site</span></a>
-      <ul class="pep-links">
-        <li><a href="/protocols/">Protocols</a></li>
-        <li><a href="/calculator/">Calculator</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/shop/" class="pep-shop">Shop</a></li>
-      </ul>
-      <button class="pep-hb" onclick="var m=this.closest('.pep-header').querySelector('.pep-mobile');m.classList.toggle('open');" aria-label="Menu">&#9776;</button>
-    </div>
-    <div class="pep-mobile">
-      <a href="/protocols/">Protocols</a>
-      <a href="/calculator/">Calculator</a>
-      <a href="/blog/">Blog</a>
-      <a href="/shop/" class="pep-shop">Shop</a>
-    </div>
-  </nav>
 
-  <div class="page-hero">
-    <div class="container">
-      <h1 style="font-size:clamp(2.5rem,6vw,4rem);margin-bottom:20px;">Trusted Research Suppliers</h1>
-      <p style="font-size:1.2rem;color:#475569;max-width:640px;margin:0 auto;">Verified vendors with third-party purity testing, consistent stock, and fast shipping. For research purposes only.</p>
-    </div>
+<nav class="pep-header">
+  <div class="pep-nav-wrap">
+    <a href="/" class="pep-logo">peptides<span>.site</span></a>
+    <ul class="pep-links">
+      <li><a href="/protocols/">Protocols</a></li>
+      <li><a href="/calculator/">Calculator</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/shop/" class="pep-shop">Shop</a></li>
+    </ul>
+    <button class="pep-hb" onclick="var m=this.closest('.pep-header').querySelector('.pep-mobile');m.classList.toggle('open');" aria-label="Menu">&#9776;</button>
   </div>
-
-  <div class="container">
-
-    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px 20px;margin:0 auto 32px;max-width:820px;font-size:.92rem;line-height:1.55;color:#7c2d12">
-      <strong>⚠️ FTC / research-use disclosure.</strong> Some links on this page are affiliate links that pay peptides.site a small commission at no additional cost to you. Inclusion is not an endorsement of any vendor, product, quality, purity, or legality. All compounds are sold and referenced <strong>for research use only</strong>. They are not medicines and are not for human or veterinary consumption. Verify legality in your jurisdiction before any purchase. See our <a href="/legal/" style="color:#7c2d12;text-decoration:underline">full disclaimer</a>.
-    </div>
-
-    <div class="vendor-grid">
-
-      <!-- Peptide Sciences -->
-      <div class="vendor-card">
-        <div style="height:6px;background:var(--accent);"></div>
-        <div class="vendor-header">
-          <span class="vendor-badge badge-top">⭐ Most Popular</span>
-          <h3 style="font-size:1.8rem;color:var(--accent);">Peptide Sciences</h3>
-          <p style="color:#64748b;margin-top:8px;">US-based, industry benchmark for purity and documentation.</p>
-        </div>
-        <div class="vendor-body">
-          <div class="product-tags">
-            <span class="product-tag">BPC-157</span>
-            <span class="product-tag">TB-500</span>
-            <span class="product-tag">CJC-1295</span>
-            <span class="product-tag">Ipamorelin</span>
-            <span class="product-tag">IGF-1 LR3</span>
-            <span class="product-tag">GHK-Cu</span>
-            <span class="product-tag">Epithalon</span>
-          </div>
-          <ul class="checklist">
-            <li>Third-party HPLC tested, CoA per batch</li>
-            <li>US-manufactured, cGMP facility</li>
-            <li>Fast domestic shipping (2–3 days)</li>
-            <li>Consistent stock availability</li>
-          </ul>
-          
-        </div>
-      </div>
-
-      <!-- Core Peptides -->
-      <div class="vendor-card">
-        <div style="height:6px;background:var(--primary);"></div>
-        <div class="vendor-header">
-          <span class="vendor-badge badge-intl">🔬 Lab Grade</span>
-          <h3 style="font-size:1.8rem;color:var(--primary);">Core Peptides</h3>
-          <p style="color:#64748b;margin-top:8px;">Research-grade quality with strong documentation and broad peptide range.</p>
-        </div>
-        <div class="vendor-body">
-          <div class="product-tags">
-            <span class="product-tag">BPC-157</span>
-            <span class="product-tag">GHK-Cu</span>
-            <span class="product-tag">Epithalon</span>
-            <span class="product-tag">Selank</span>
-            <span class="product-tag">Semax</span>
-            <span class="product-tag">DSIP</span>
-            <span class="product-tag">PT-141</span>
-          </div>
-          <ul class="checklist">
-            <li>Independent lab verified purity</li>
-            <li>Lyophilised and sealed for stability</li>
-            <li>Discreet packaging</li>
-            <li>Competitive pricing on bundles</li>
-          </ul>
-          
-        </div>
-      </div>
-
-      <!-- Swiss Chems -->
-      <div class="vendor-card">
-        <div style="height:6px;background:#059669;"></div>
-        <div class="vendor-header">
-          <span class="vendor-badge badge-eu">🌍 Ships Worldwide</span>
-          <h3 style="font-size:1.8rem;color:#059669;">Swiss Chems</h3>
-          <p style="color:#64748b;margin-top:8px;">International shipping, wide peptide and nootropic catalogue.</p>
-        </div>
-        <div class="vendor-body">
-          <div class="product-tags">
-            <span class="product-tag">BPC-157</span>
-            <span class="product-tag">TB-500</span>
-            <span class="product-tag">CJC-1295</span>
-            <span class="product-tag">Ipamorelin</span>
-            <span class="product-tag">Melanotan II</span>
-            <span class="product-tag">Tesamorelin</span>
-          </div>
-          <ul class="checklist">
-            <li>Purity guaranteed &gt;98% per batch</li>
-            <li>Ships to most countries</li>
-            <li>Multiple payment methods including crypto</li>
-            <li>Volume discounts available</li>
-          </ul>
-          
-        </div>
-      </div>
-
-      <!-- Limitless Life -->
-      <div class="vendor-card">
-        <div style="height:6px;background:#7c3aed;"></div>
-        <div class="vendor-header">
-          <span class="vendor-badge" style="background:#ede9fe;color:#4c1d95;">🧬 Premium Range</span>
-          <h3 style="font-size:1.8rem;color:#7c3aed;">Limitless Life</h3>
-          <p style="color:#64748b;margin-top:8px;">Premium peptides with a focus on longevity and cognitive research compounds.</p>
-        </div>
-        <div class="vendor-body">
-          <div class="product-tags">
-            <span class="product-tag">BPC-157</span>
-            <span class="product-tag">Cerebrolysin</span>
-            <span class="product-tag">Dihexa</span>
-            <span class="product-tag">NSI-189</span>
-            <span class="product-tag">GHK-Cu</span>
-            <span class="product-tag">Thymalin</span>
-          </div>
-          <ul class="checklist">
-            <li>Biohacker-focused catalogue</li>
-            <li>Detailed product documentation</li>
-            <li>Nootropic + peptide combo stacks</li>
-            <li>US domestic and international shipping</li>
-          </ul>
-          
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Comparison Table -->
-    <h2 style="font-size:2.2rem;margin-bottom:8px;">Quick Comparison</h2>
-    <p style="color:#64748b;margin-bottom:24px;">At a glance — key factors for research procurement decisions.</p>
-
-    <div class="table-scroll">
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Vendor</th>
-          <th>3rd-Party Tested</th>
-          <th>CoA Available</th>
-          <th>Ships Intl.</th>
-          <th>BPC-157</th>
-          <th>TB-500</th>
-          <th>Crypto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Peptide Sciences</strong></td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="cross">US only</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="cross">✗</td>
-        </tr>
-        <tr>
-          <td><strong>Core Peptides</strong></td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="cross">✗</td>
-          <td class="cross">✗</td>
-        </tr>
-        <tr>
-          <td><strong>Swiss Chems</strong></td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-        </tr>
-        <tr>
-          <td><strong>Limitless Life</strong></td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="tick">✓</td>
-          <td class="cross">✗</td>
-          <td class="cross">✗</td>
-        </tr>
-      </tbody>
-    </table>
-    </div><!-- /table-scroll -->
-
-    <div class="disclaimer">
-      <strong>⚠️ RESEARCH USE ONLY:</strong> All vendors listed supply compounds strictly for laboratory and research purposes. Products are not approved for human consumption. Peptides.site earns affiliate commission on purchases made through some links on this page. This does not affect our recommendations or editorial independence.
-    </div>
-
+  <div class="pep-mobile">
+    <a href="/protocols/">Protocols</a>
+    <a href="/calculator/">Calculator</a>
+    <a href="/blog/">Blog</a>
+    <a href="/shop/">Shop</a>
   </div>
+</nav>
 
-  <footer>
-    <p style="opacity:0.7;">© 2026 Peptides.site — For laboratory research purposes only.</p>
-    <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
-    <p style="margin-top:16px;font-size:0.85rem;"><a href="/legal/" style="color:inherit;opacity:0.7;margin:0 8px">Disclaimer</a> · <a href="/privacy/" style="color:inherit;opacity:0.7;margin:0 8px">Privacy</a> · <a href="/terms/" style="color:inherit;opacity:0.7;margin:0 8px">Terms</a> · <a href="mailto:privacy@peptides.site" style="color:inherit;opacity:0.7;margin:0 8px">Contact</a></p>
-  </footer>
-  <script>
-    function toggleNav() {
-      document.getElementById('mobileNav').classList.toggle('open');
-    }
-  </script>
-  <script defer src="/lead-magnet.js"></script>
-  <script src="/gatekeeper.js" defer></script>
+<main>
+  <div class="coming-soon">
+    <div class="badge">Coming Soon</div>
+    <h1>The shop is<br><span>almost ready.</span></h1>
+    <p>We're building something worth waiting for. Enter your email and we'll let you know the moment we go live.</p>
+
+    <form class="email-form" id="shopForm">
+      <input type="email" id="shopEmail" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit" id="shopBtn">Notify me</button>
+    </form>
+    <div class="success-msg" id="shopSuccess">You're on the list. We'll email you when we launch.</div>
+    <div class="error-msg" id="shopError">Something went wrong. Please try again.</div>
+    <p class="form-note">No spam. One email when the shop opens.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Peptides.site — For laboratory research purposes only.</p>
+  <p style="margin-top:12px;font-size:0.85rem;opacity:0.5;">Not for human use. Not medical advice.</p>
+  <p style="margin-top:16px;">
+    <a href="/legal/">Disclaimer</a> ·
+    <a href="/privacy/">Privacy</a> ·
+    <a href="/terms/">Terms</a>
+  </p>
+</footer>
+
+<script>
+  document.getElementById('shopForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('shopEmail').value.trim();
+    var btn = document.getElementById('shopBtn');
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('https://n8n.getmicroservices.co/webhook/lead-magnet-cf9a4e2b', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'peptides-shop-coming-soon', page: window.location.href })
+    })
+    .then(function(r) {
+      document.getElementById('shopForm').style.display = 'none';
+      document.getElementById('shopSuccess').classList.add('show');
+      // GA event
+      if (typeof gtag !== 'undefined') gtag('event', 'shop_waitlist_signup', { email_domain: email.split('@')[1] });
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Notify me';
+      document.getElementById('shopError').classList.add('show');
+    });
+  });
+</script>
 </body>
 </html>
